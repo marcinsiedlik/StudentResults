@@ -8,18 +8,19 @@ abstract class BaseNotifier with ChangeNotifier {
     @required Future<T> block(),
     onSuccess(T result),
     onError(Exception e),
-    bool additionalFetch = false,
   }) async {
     _updateStatusAndNotify(callState, Status.PROGRESS);
     try {
       final response = await block();
       onSuccess?.call(response);
+      callState.data = response;
       _updateStatusAndNotify(callState, Status.SUCCESS);
     } on Error catch (e, st) {
       logger.e('Dispatch error: ', e, st);
     } catch (e, st) {
       logger.e('Dispatch exception: ', e.runtimeType, st);
       onError?.call(e);
+      callState.exception = e;
       _updateStatusAndNotify(callState, Status.ERROR);
     }
   }

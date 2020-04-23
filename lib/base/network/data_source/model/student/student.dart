@@ -1,14 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'student.freezed.dart';
-
 part 'student.g.dart';
 
 @freezed
 abstract class Student with _$Student {
   const factory Student(
     String index,
-    int mark,
+    double mark,
     String group,
     int lecturePoints,
     int homeworkPoints,
