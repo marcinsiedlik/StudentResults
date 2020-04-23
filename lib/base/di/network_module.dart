@@ -9,7 +9,7 @@ abstract class NetworkModule {
   Dio get dio {
     final dio = Dio();
     dio
-      ..options.baseUrl = 'https://appost.herokuapp.com/'
+      ..options.baseUrl = 'http://tomaszgadek.com/api'
       ..interceptors.addAll([
         LoggerInterceptor(),
         ConnectivityInterceptor(),
