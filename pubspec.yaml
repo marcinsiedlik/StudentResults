@@ -49,33 +49,7 @@ flutter:
 
   uses-material-design: true
 
-  
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  assets:
+    - lang/
+    - assets/icons/
+    - assets/images/

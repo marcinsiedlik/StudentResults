@@ -1,0 +1,16 @@
+{
+  "app_name": "StudentResult",
+  "error_flushbar_title": "Wystąpił błąd",
+  "error_unauthorized_exception": "Brak wystarczających uprawnień",
+  "error_not_found_exception": "Nie znaleziono",
+  "error_unknown_error_exception": "Wystąpił nieoczekiwany błąd",
+  "error_server_not_reachable_exception": "Serwer nie odpowiada",
+  "error_connectivity_exception": "Brak połączenia z internetem",
+  "error_wrong_credentials_exception": "Niepoprawny login lub hasło",
+  "error_internal_server_exception": "Wystąpił wewnętrzny błąd serwera",
+  "error_bad_validation_exception": "Błąd walidacji",
+  "error_default_exception": "Wystąpił nieoczekiwany błąd",
+  "error_default_message": "Wystąpił nieoczekiwany błąd",
+  "list_is_empty": "Lista jest pusta!",
+  "error_occurred": "Wystąpił błąd"
+}
