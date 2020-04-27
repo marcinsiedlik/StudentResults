@@ -18,7 +18,7 @@ class RankingNotifier extends BaseNotifier {
   void _fetchStudents() async {
     dispatch(
       callState: studentsState,
-      block: () async => await _repository.getStudents(),
+      block: () => _repository.getStudents(),
       onError: RouterExtensions.showErrorFlushbar,
     );
   }
