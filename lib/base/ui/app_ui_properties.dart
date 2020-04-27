@@ -10,8 +10,8 @@ class AppColors {
   static const colorPrimaryLight = Color(0xFF40BAD5);
   static const colorAccent = Color(0xFFFCBF1E);
   static const colorError = Color(0xFFD32E2E);
-  static const colorPrimarySwatch = MaterialColor(
-    0xFF1973D3,
+  static final colorPrimarySwatch = MaterialColor(
+    0xFF035AA6,
     <int, Color>{
       50: Color(0xFFE1EBF4),
       100: Color(0xFFB3CEE4),
