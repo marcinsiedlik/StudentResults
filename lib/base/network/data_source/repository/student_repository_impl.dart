@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:results/base/network/data_source/model/student/student.dart';
+import 'package:results/base/network/data_source/model/student/network/network_student.dart';
 import 'package:results/base/network/data_source/model/student_details/student_details.dart';
 import 'package:results/base/network/data_source/repository/student_repository.dart';
 import 'package:results/base/network/data_source/service/rest_service.dart';
@@ -13,7 +13,7 @@ class StudentRepositoryImpl extends BaseRepository implements StudentRepository 
   StudentRepositoryImpl(this._service);
 
   @override
-  Future<List<Student>> getStudents() => call(() => _service.getStudents());
+  Future<List<NetworkStudent>> getStudents() => call(() => _service.getStudents());
 
   @override
   Future<StudentDetails> getStudentDetails(String index) => call(() => _service.getStudentDetails(index));
