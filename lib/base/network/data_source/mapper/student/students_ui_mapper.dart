@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:results/base/extensions/list_extensions.dart';
 import 'package:results/base/network/data_source/model/student/network/network_student.dart';
+import 'package:results/base/network/data_source/model/student/ui/place_type.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_student.dart';
 import 'package:results/base/network/mapper/ui_mapper.dart';
 
@@ -10,7 +11,8 @@ class StudentsUiMapper implements UiMapper<List<NetworkStudent>, List<UiStudent>
   List<UiStudent> mapToUi(List<NetworkStudent> network) => network
       .mapIndexed(
         (index, item) => UiStudent(
-          place: index,
+          place: index + 1,
+          placeType: _getPlaceType(index + 1),
           index: item.index,
           mark: item.mark,
           group: item.group,
@@ -22,4 +24,15 @@ class StudentsUiMapper implements UiMapper<List<NetworkStudent>, List<UiStudent>
         ),
       )
       .toList();
+
+  PlaceType _getPlaceType(int place) {
+    if (place == 1) {
+      return PlaceType.first();
+    } else if (place == 2) {
+      return PlaceType.second();
+    } else if (place == 2) {
+      return PlaceType.third();
+    }
+    return PlaceType.other(place);
+  }
 }

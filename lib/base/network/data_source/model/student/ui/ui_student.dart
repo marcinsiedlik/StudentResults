@@ -1,13 +1,14 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:results/base/network/data_source/model/student/ui/place_type.dart';
 
 part 'ui_student.freezed.dart';
-
 part 'ui_student.g.dart';
 
 @freezed
 abstract class UiStudent with _$UiStudent {
   const factory UiStudent({
     @required int place,
+    @required PlaceType placeType,
     @required String index,
     @required double mark,
     @required String group,

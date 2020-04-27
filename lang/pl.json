@@ -13,6 +13,8 @@
   "error_default_message": "Wystąpił nieoczekiwany błąd",
   "list_is_empty": "Lista jest pusta!",
   "error_occurred": "Wystąpił błąd",
+  "podium": "Podium",
   "results": "Wyniki",
-  "search": "Wyszukaj"
+  "search": "Wyszukaj",
+  "points": "Punkty"
 }
