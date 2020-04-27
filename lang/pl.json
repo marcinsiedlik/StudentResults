@@ -16,5 +16,9 @@
   "podium": "Podium",
   "results": "Wyniki",
   "search": "Wyszukaj",
-  "points": "Punkty"
+  "points": "Punkty",
+  "classification": "Klasyfikacja",
+  "index": "indeks",
+  "all_points": "punkty",
+  "grade": "ocena"
 }

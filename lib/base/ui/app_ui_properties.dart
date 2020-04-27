@@ -34,7 +34,7 @@ class AppThemes {
     primaryColor: AppColors.colorPrimary,
     fontFamily: AppFonts.fontBarlow,
     splashFactory: InkRipple.splashFactory,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: const Color(0xFFFAFAFA),
     cursorColor: AppColors.colorPrimary,
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(

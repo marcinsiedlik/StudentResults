@@ -14,60 +14,63 @@ class PodiumItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: InkWell(
-        onTap: () {},
-        child: Column(
-          children: <Widget>[
-            Image.asset(
-              student.placeType.maybeWhen(
-                first: () => 'assets/images/medal_first.png',
-                second: () => 'assets/images/medal_second.png',
-                orElse: () => 'assets/images/medal_third.png',
-              ),
-              width: 60,
-            ),
-            const SizedBox(height: 8),
-            Text(
-              student.index,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.fade,
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-                color: AppColors.colorPrimaryDark,
-              ),
-            ),
-            const SizedBox(height: 8),
-            RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(children: [
-                TextSpan(
-                  text: '${AppLocalizations.of(context).get('points')}: ',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: AppColors.colorPrimaryDark,
-                  ),
+    return Flexible(
+      flex: 3,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: InkWell(
+          onTap: () => onClicked(student),
+          child: Column(
+            children: <Widget>[
+              Image.asset(
+                student.placeType.maybeWhen(
+                  first: () => 'assets/images/medal_first.png',
+                  second: () => 'assets/images/medal_second.png',
+                  orElse: () => 'assets/images/medal_third.png',
                 ),
-                TextSpan(
-                  text: '${student.allPoints}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                    color: AppColors.colorPrimaryDark,
-                  ),
+                width: 60,
+              ),
+              const SizedBox(height: 8),
+              Text(
+                student.index,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.fade,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  color: AppColors.colorPrimaryDark,
                 ),
-              ]),
-            ),
-            const SizedBox(height: 10),
-          ],
+              ),
+              const SizedBox(height: 8),
+              RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(children: [
+                  TextSpan(
+                    text: '${AppLocalizations.of(context).get('points')}: ',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: AppColors.colorPrimaryDark,
+                    ),
+                  ),
+                  TextSpan(
+                    text: '${student.allPoints}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 16,
+                      color: AppColors.colorPrimaryDark,
+                    ),
+                  ),
+                ]),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
     );

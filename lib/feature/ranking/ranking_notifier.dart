@@ -32,5 +32,7 @@ class RankingNotifier extends BaseNotifier {
     );
   }
 
-  void onStudentClicked(UiStudent student) {}
+  void onStudentClicked(UiStudent student) {
+    print('student clicked: ${student.toString()}');
+  }
 }

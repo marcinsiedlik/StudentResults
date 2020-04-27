@@ -25,7 +25,7 @@ class PodiumSectionSliver extends StatelessWidget {
             children: <Widget>[
               const SizedBox(height: 32),
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   '${AppLocalizations.of(context).get('podium')}:',
                   style: const TextStyle(

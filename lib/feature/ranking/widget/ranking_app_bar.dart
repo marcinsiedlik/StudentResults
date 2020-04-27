@@ -52,7 +52,7 @@ class RankingAppBar extends StatelessWidget {
                 hintText: AppLocalizations.of(context).get('search'),
                 prefixIcon: Icon(Icons.search),
                 hintStyle: const TextStyle(
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w600,
                   fontSize: 15,
                 ),
                 fillColor: Colors.white,

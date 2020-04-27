@@ -17,7 +17,7 @@ class RankingDataInternalMapper implements InternalMapper<List<NetworkStudent>, 
       first: students[0],
       second: students[1],
       third: students[2],
-      other: students.getRange(3, students.length - 1).toList(),
+      other: students.getRange(3, students.length).toList(),
     );
   }
 }
