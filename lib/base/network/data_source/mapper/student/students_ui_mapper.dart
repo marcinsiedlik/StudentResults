@@ -30,7 +30,7 @@ class StudentsUiMapper implements UiMapper<List<NetworkStudent>, List<UiStudent>
       return PlaceType.first();
     } else if (place == 2) {
       return PlaceType.second();
-    } else if (place == 2) {
+    } else if (place == 3) {
       return PlaceType.third();
     }
     return PlaceType.other(place);

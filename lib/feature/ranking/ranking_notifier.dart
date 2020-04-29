@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 import 'package:results/base/extensions/list_extensions.dart';
 import 'package:results/base/extensions/router_extensions.dart';
@@ -7,16 +8,15 @@ import 'package:results/base/network/data_source/model/student/ui/ui_student.dar
 import 'package:results/base/network/data_source/repository/student_repository.dart';
 import 'package:results/base/ui/call_state/call_state.dart';
 import 'package:results/base/ui/notifier/base_notifier.dart';
+import 'package:results/base/ui/routes/router.gr.dart';
 
 @injectable
 class RankingNotifier extends BaseNotifier {
   final StudentRepository _repository;
   final RankingDataInternalMapper _mapper;
 
-  RankingNotifier(
-    this._repository,
-    this._mapper,
-  ) {
+  RankingNotifier(this._repository,
+      this._mapper,) {
     _fetchStudents();
   }
 
@@ -47,7 +47,13 @@ class RankingNotifier extends BaseNotifier {
   }
 
   void onStudentClicked(UiStudent student) {
-    print('student clicked: ${student.toString()}');
+    final nextStudent = student.placeType.when(
+      first: () => null,
+      second: () => _rankingData.first,
+      third: () => _rankingData.second,
+      other: (place) => place == 4 ? _rankingData.third : _rankingData.other[_rankingData.other.indexOf(student) - 1],
+    );
+    ExtendedNavigator.ofRouter<Router>().pushStudentDetailsPage(selectedStudent: student, nextStudent: nextStudent);
   }
 
   void _updateRankingData() {

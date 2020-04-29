@@ -41,9 +41,12 @@ class PlaceItem extends StatelessWidget {
               Row(
                 children: <Widget>[
                   const SizedBox(width: 8),
-                  PlaceIcon(
-                    number: student.place,
-                    color: student.place % 2 == 0 ? AppColors.colorAccent : AppColors.colorPrimary,
+                  Hero(
+                    tag: student.index,
+                    child: PlaceIcon(
+                      number: student.place,
+                      color: student.place % 2 == 0 ? AppColors.colorAccent : AppColors.colorPrimary,
+                    ),
                   ),
                   const SizedBox(width: 16),
                   Column(

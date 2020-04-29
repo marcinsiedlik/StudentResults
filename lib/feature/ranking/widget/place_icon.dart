@@ -4,10 +4,14 @@ import 'package:results/base/ui/app_ui_properties.dart';
 class PlaceIcon extends StatelessWidget {
   final int number;
   final Color color;
+  final double fontSize;
+  final double padding;
 
   PlaceIcon({
     @required this.number,
     this.color = AppColors.colorAccent,
+    this.fontSize = 20,
+    this.padding = 12,
   });
 
   @override
@@ -21,13 +25,13 @@ class PlaceIcon extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: EdgeInsets.all(padding),
         child: Text(
           '#$number',
           style: TextStyle(
             fontWeight: FontWeight.w700,
             color: color,
-            fontSize: 20,
+            fontSize: fontSize,
           ),
         ),
       ),
