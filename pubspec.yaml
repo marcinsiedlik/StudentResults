@@ -30,6 +30,7 @@ dependencies:
   flushbar: ^1.10.0
   flutter_svg: ^0.17.4
   date_format: ^1.0.8
+  implicitly_animated_reorderable_list: ^0.1.10
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +41,7 @@ dev_dependencies:
   # network
   retrofit_generator: ^1.3.4+1
   # navigation
-  auto_route_generator: ^0.4.7
+  auto_route_generator: ^0.4.8
   # util
   freezed: ^0.10.7
 

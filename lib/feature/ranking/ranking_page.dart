@@ -29,7 +29,7 @@ class RankingPage extends StatelessWidget {
   Widget _buildPageLayout(BuildContext context, RankingNotifier notifier, UiRankingData data) {
     return CustomScrollView(
       slivers: <Widget>[
-        RankingAppBar(),
+        RankingAppBar(onSearchChanged: notifier.onSearchChanged),
         PodiumSectionSliver(
           child: _buildPodiumItems(context, notifier, data),
         ),

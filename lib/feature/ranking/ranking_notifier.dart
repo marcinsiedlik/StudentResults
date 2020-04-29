@@ -32,6 +32,10 @@ class RankingNotifier extends BaseNotifier {
     );
   }
 
+  void onSearchChanged(String text) {
+    print("ON CHANGED: $text");
+  }
+
   void onStudentClicked(UiStudent student) {
     print('student clicked: ${student.toString()}');
   }
