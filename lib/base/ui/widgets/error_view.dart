@@ -5,10 +5,12 @@ import 'package:results/base/ui/localization/app_localizations.dart';
 class ErrorView extends StatelessWidget {
   final String titleKey;
   final String messageKey;
+  final VoidCallback onRetryPressed;
 
   ErrorView({
     this.titleKey = 'error_occurred',
     @required this.messageKey,
+    this.onRetryPressed,
   }) : assert(titleKey != null && messageKey != null);
 
   @override
@@ -27,8 +29,8 @@ class ErrorView extends StatelessWidget {
           Text(
             AppLocalizations.of(context).get(titleKey),
             style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              fontSize: 18,
             ),
           ),
           const SizedBox(height: 8),
@@ -36,10 +38,17 @@ class ErrorView extends StatelessWidget {
             AppLocalizations.of(context).get(messageKey),
             textAlign: TextAlign.center,
             style: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              fontSize: 15,
             ),
           ),
+          const SizedBox(height: 16),
+          onRetryPressed != null
+              ? RaisedButton(
+                  onPressed: onRetryPressed,
+                  child: Text(AppLocalizations.of(context).get('retry')),
+                )
+              : Container(),
           const SizedBox(height: 32),
         ],
       ),

@@ -4,6 +4,7 @@ import 'package:results/base/di/get_it.dart';
 import 'package:results/base/extensions/notifier_extensions.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_ranking_data.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_student.dart';
+import 'package:results/base/ui/widgets/error_view.dart';
 import 'package:results/base/ui/widgets/safe_area_sliver.dart';
 import 'package:results/feature/ranking/ranking_notifier.dart';
 import 'package:results/feature/ranking/widget/classification_header_sliver.dart';
@@ -20,9 +21,12 @@ class RankingPage extends StatelessWidget {
       builder: (context, notifier, _) => Scaffold(
         body: notifier.studentsState.when(
           initial: () => Container(),
-          progress: () => Container(),
+          progress: () => Center(child: CircularProgressIndicator()),
           success: (data) => _buildPageLayout(context, notifier, data),
-          error: (_) => Container(),
+          error: (_) => ErrorView(
+            messageKey: 'students_error_message',
+            onRetryPressed: notifier.onRetryPressed,
+          ),
         ),
       ),
     );

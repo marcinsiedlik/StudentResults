@@ -37,6 +37,10 @@ class RankingNotifier extends BaseNotifier {
     );
   }
 
+  void onRetryPressed() {
+    _fetchStudents();
+  }
+
   void onSearchChanged(String text) {
     _searchQuery = text;
     _updateRankingData();
