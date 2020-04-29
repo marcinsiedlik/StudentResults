@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:results/base/di/get_it.dart';
+import 'package:results/base/extensions/notifier_extensions.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_student.dart';
-import 'package:results/feature/ranking/widget/place_icon.dart';
 import 'package:results/feature/student_details/student_details_notifier.dart';
+import 'package:results/feature/student_details/widget/points_table_sliver.dart';
+import 'package:results/feature/student_details/widget/student_details_app_bar.dart';
+import 'package:results/feature/student_details/widget/user_info_section_sliver.dart';
 
 class StudentDetailsPage extends StatelessWidget {
   final UiStudent selectedStudent;
@@ -16,24 +18,16 @@ class StudentDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return NotifierExtension.createWithConsumer(
       create: (_) => getIt<StudentDetailsNotifier>(param1: selectedStudent, param2: nextStudent),
-      child: Consumer<StudentDetailsNotifier>(
-        builder: (context, notifier, _) => Scaffold(
-          body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(height: 50),
-                Center(
-                  child: Hero(
-                    tag: selectedStudent.index,
-                    child: PlaceIcon(number: selectedStudent.place),
-                  ),
-                )
-              ],
-            ),
+      builder: (context, notifier, _) => Scaffold(
+        body: Container(
+          child: CustomScrollView(
+            slivers: <Widget>[
+              StudentDetailsAppBar(),
+              UserInfoSectionSliver(student: selectedStudent),
+              PointTableSliver(student: selectedStudent),
+            ],
           ),
         ),
       ),

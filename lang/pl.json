@@ -22,5 +22,10 @@
   "classification": "Klasyfikacja",
   "index": "indeks",
   "all_points": "punkty",
-  "grade": "ocena"
+  "grade": "ocena",
+  "album_number": "numer albumu",
+  "point_table": "PUNKTACJA:",
+  "lectures": "Wykłady",
+  "laboratories": "Laboratoria",
+  "sum": "Suma"
 }

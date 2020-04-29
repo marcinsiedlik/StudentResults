@@ -10,6 +10,7 @@ class AppColors {
   static const colorPrimaryLight = Color(0xFF40BAD5);
   static const colorAccent = Color(0xFFFCBF1E);
   static const colorError = Color(0xFFD32E2E);
+  static const colorLightGrey = Color(0xFFFAFAFA);
   static final colorPrimarySwatch = MaterialColor(
     0xFF035AA6,
     <int, Color>{
@@ -34,7 +35,7 @@ class AppThemes {
     primaryColor: AppColors.colorPrimary,
     fontFamily: AppFonts.fontBarlow,
     splashFactory: InkRipple.splashFactory,
-    scaffoldBackgroundColor: const Color(0xFFFAFAFA),
+    scaffoldBackgroundColor: AppColors.colorLightGrey,
     cursorColor: AppColors.colorPrimary,
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: const TextStyle(
