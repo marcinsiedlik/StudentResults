@@ -24,8 +24,9 @@ class PointTableSliver extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.colorPrimarySwatch.shade50,
-                  blurRadius: 20.0,
+                  color: AppColors.colorPrimarySwatch.shade100,
+                  blurRadius: 7.0,
+                  spreadRadius: -2.0,
                 )
               ],
             ),
@@ -39,7 +40,7 @@ class PointTableSliver extends StatelessWidget {
   Widget _buildPoints(BuildContext context) {
     final localizations = AppLocalizations.of(context);
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 22, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 22, horizontal: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

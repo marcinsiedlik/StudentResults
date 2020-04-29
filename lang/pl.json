@@ -32,5 +32,6 @@
   "tip_content": "Aby wspiąć się wyżej w klasyfikacji musisz zdobyć jeszcze",
   "point_single": "punkt",
   "point_few": "punkty",
-  "point_many": "punktów"
+  "point_many": "punktów",
+  "presence_table": "OBECNOŚĆ:"
 }
