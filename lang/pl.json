@@ -33,5 +33,10 @@
   "point_single": "punkt",
   "point_few": "punkty",
   "point_many": "punktów",
-  "presence_table": "OBECNOŚĆ:"
+  "presence_table": "OBECNOŚĆ:",
+  "labs_table": "LABORATORIA:",
+  "lab_date": "Data zajęć",
+  "points_earned": "Zdobyto\npunktów",
+  "presence": "Obecny",
+  "absence": "Nieobecny"
 }

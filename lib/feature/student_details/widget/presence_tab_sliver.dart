@@ -50,7 +50,7 @@ class PresenceTabSliver extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 60),
+        const SizedBox(height: 32),
       ]),
     );
   }
