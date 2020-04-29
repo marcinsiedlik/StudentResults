@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:results/base/di/get_it.dart';
 import 'package:results/base/extensions/notifier_extensions.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_ranking_data.dart';
+import 'package:results/base/network/data_source/model/student/ui/ui_student.dart';
 import 'package:results/base/ui/widgets/safe_area_sliver.dart';
 import 'package:results/feature/ranking/ranking_notifier.dart';
 import 'package:results/feature/ranking/widget/classification_header_sliver.dart';
@@ -27,6 +29,7 @@ class RankingPage extends StatelessWidget {
   }
 
   Widget _buildPageLayout(BuildContext context, RankingNotifier notifier, UiRankingData data) {
+    const duration = const Duration(milliseconds: 200);
     return CustomScrollView(
       slivers: <Widget>[
         RankingAppBar(onSearchChanged: notifier.onSearchChanged),
@@ -34,13 +37,18 @@ class RankingPage extends StatelessWidget {
           child: _buildPodiumItems(context, notifier, data),
         ),
         ClassificationHeaderSliver(),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (context, index) => PlaceItem(
-              student: data.other[index],
+        SliverImplicitlyAnimatedList<UiStudent>(
+          items: data.other,
+          areItemsTheSame: (oldItem, newItem) => oldItem.index == newItem.index,
+          insertDuration: duration,
+          removeDuration: duration,
+          updateDuration: duration,
+          itemBuilder: (context, animation, item, i) => FadeTransition(
+            opacity: animation,
+            child: PlaceItem(
+              student: item,
               onClicked: notifier.onStudentClicked,
             ),
-            childCount: data.other.length,
           ),
         ),
         SafeAreaSliver(side: SafeAreaSliverSide.bottom),

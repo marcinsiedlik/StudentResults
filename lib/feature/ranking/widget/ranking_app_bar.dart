@@ -98,10 +98,7 @@ class _RankingAppBarState extends State<RankingAppBar> {
           ),
         ),
         Container(
-          height: MediaQuery
-              .of(context)
-              .padding
-              .top + kToolbarHeight,
+          height: MediaQuery.of(context).padding.top + kToolbarHeight,
           color: AppColors.colorPrimary,
         )
       ],
