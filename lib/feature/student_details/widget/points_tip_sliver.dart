@@ -21,8 +21,6 @@ class PointsTipSliver extends StatelessWidget {
         ]),
       );
     }
-    final localizations = AppLocalizations.of(context);
-    final requiredPoints = _calculateRequiredPoints();
     return SliverList(
       delegate: SliverChildListDelegate([
         Padding(
@@ -40,7 +38,7 @@ class PointsTipSliver extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      localizations.get('tip'),
+                      AppLocalizations.of(context).get('tip'),
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppColors.colorPrimaryDark,
@@ -48,26 +46,7 @@ class PointsTipSliver extends StatelessWidget {
                         fontSize: 18,
                       ),
                     ),
-                    RichText(
-                      text: TextSpan(
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.italic,
-                            color: AppColors.colorPrimaryDark,
-                            fontSize: 16,
-                          ),
-                          children: [
-                            TextSpan(text: localizations.get('tip_content')),
-                            TextSpan(text: ' '),
-                            TextSpan(
-                              text: requiredPoints.toString(),
-                              style: const TextStyle(fontWeight: FontWeight.w700),
-                            ),
-                            TextSpan(text: ' '),
-                            TextSpan(text: _getPointsPlural(localizations, requiredPoints)),
-                            TextSpan(text: '.'),
-                          ]),
-                    ),
+                    _buildTextSection(context),
                   ],
                 ),
               ),
@@ -75,6 +54,31 @@ class PointsTipSliver extends StatelessWidget {
           ),
         ),
       ]),
+    );
+  }
+
+  Widget _buildTextSection(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    final requiredPoints = _calculateRequiredPoints();
+    return RichText(
+      text: TextSpan(
+          style: const TextStyle(
+            fontWeight: FontWeight.w400,
+            fontStyle: FontStyle.italic,
+            color: AppColors.colorPrimaryDark,
+            fontSize: 16,
+          ),
+          children: [
+            TextSpan(text: localizations.get('tip_content')),
+            TextSpan(text: ' '),
+            TextSpan(
+              text: requiredPoints.toString(),
+              style: const TextStyle(fontWeight: FontWeight.w700),
+            ),
+            TextSpan(text: ' '),
+            TextSpan(text: _getPointsPlural(localizations, requiredPoints)),
+            TextSpan(text: '.'),
+          ]),
     );
   }
 
