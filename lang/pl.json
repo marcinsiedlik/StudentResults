@@ -27,5 +27,10 @@
   "point_table": "PUNKTACJA:",
   "lectures": "Wykłady",
   "laboratories": "Laboratoria",
-  "sum": "Suma"
+  "sum": "Suma",
+  "tip": "Wskazówka:",
+  "tip_content": "Aby wspiąć się wyżej w klasyfikacji musisz zdobyć jeszcze",
+  "point_single": "punkt",
+  "point_few": "punkty",
+  "point_many": "punktów"
 }
