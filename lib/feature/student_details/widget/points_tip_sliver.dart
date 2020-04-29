@@ -15,7 +15,11 @@ class PointsTipSliver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (nextStudent == null) {
-      return SliverList(delegate: SliverChildListDelegate([]));
+      return SliverList(
+        delegate: SliverChildListDelegate([
+          const SizedBox(height: 32),
+        ]),
+      );
     }
     final localizations = AppLocalizations.of(context);
     final requiredPoints = _calculateRequiredPoints();
