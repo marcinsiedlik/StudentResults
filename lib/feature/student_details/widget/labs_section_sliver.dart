@@ -6,11 +6,17 @@ import 'package:results/base/ui/localization/app_localizations.dart';
 import 'package:results/feature/student_details/widget/laboratory_item.dart';
 
 class LabsSectionSliver extends StatefulWidget {
+  final List<LabDetails> labs;
+
+  LabsSectionSliver({@required this.labs});
+
   @override
   _LabsSectionSliverState createState() => _LabsSectionSliverState();
 }
 
 class _LabsSectionSliverState extends State<LabsSectionSliver> {
+  var _currentLab = 0;
+
   @override
   Widget build(BuildContext context) {
     return SliverList(
@@ -29,15 +35,37 @@ class _LabsSectionSliverState extends State<LabsSectionSliver> {
         const SizedBox(height: 32),
         CarouselSlider(
           options: CarouselOptions(
-            viewportFraction: 0.85,
-            height: 220,
-            enlargeCenterPage: true,
-            enableInfiniteScroll: true,
-          ),
-          items: [1, 2, 3, 4, 5].map((e) => LaboratoryItem(labDetails: LabDetails('2020-04-16', true, 5))).toList(),
+              viewportFraction: 0.85,
+              height: 220,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: true,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  _currentLab = index;
+                });
+              }),
+          items: widget.labs.map((lab) => LaboratoryItem(labDetails: lab)).toList(),
         ),
-        SizedBox(height: 100),
+        _buildSelectedIndicator(context),
+        const SizedBox(height: 32),
       ]),
+    );
+  }
+
+  Widget _buildSelectedIndicator(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: widget.labs.map((item) {
+        return Container(
+          width: 8,
+          height: 8,
+          margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: _currentLab == widget.labs.indexOf(item) ? Colors.blueGrey : Colors.blueGrey.withAlpha(50),
+          ),
+        );
+      }).toList(),
     );
   }
 }

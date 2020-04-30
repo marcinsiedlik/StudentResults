@@ -20,7 +20,7 @@ class ErrorView extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+          const SizedBox(height: 32),
           SvgPicture.asset(
             'assets/images/error.svg',
             width: MediaQuery.of(context).size.width * 0.25,

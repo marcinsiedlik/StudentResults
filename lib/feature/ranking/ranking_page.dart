@@ -23,9 +23,11 @@ class RankingPage extends StatelessWidget {
           initial: () => Container(),
           progress: () => Center(child: CircularProgressIndicator()),
           success: (data) => _buildPageLayout(context, notifier, data),
-          error: (_) => ErrorView(
-            messageKey: 'students_error_message',
-            onRetryPressed: notifier.onRetryPressed,
+          error: (_) => Center(
+            child: ErrorView(
+              messageKey: 'students_error_message',
+              onRetryPressed: notifier.onRetryPressed,
+            ),
           ),
         ),
       ),

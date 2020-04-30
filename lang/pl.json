@@ -38,5 +38,6 @@
   "lab_date": "Data zajęć",
   "points_earned": "Zdobyto\npunktów",
   "presence": "Obecny",
-  "absence": "Nieobecny"
+  "absence": "Nieobecny",
+  "labs_fetch_error": "Podczas pobierania szczegółów laboratoriów wystąpił nieoczekiwany błąd"
 }
