@@ -11,11 +11,14 @@ class ClassificationHeaderSliver extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            '${AppLocalizations.of(context).get('classification')}:',
+            AppLocalizations.of(context).get('classification_table'),
+            textAlign: TextAlign.center,
             style: const TextStyle(
+              letterSpacing: 1.5,
+              fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w700,
-              fontSize: 26,
               color: AppColors.colorPrimaryDark,
+              fontSize: 24,
             ),
           ),
         ),

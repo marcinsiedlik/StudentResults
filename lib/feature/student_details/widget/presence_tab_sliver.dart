@@ -34,7 +34,7 @@ class PresenceTabSliver extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     AppLocalizations.of(context).get('presence_table'),
-                    style: TextStyle(
+                    style: const TextStyle(
                       letterSpacing: 1.5,
                       fontStyle: FontStyle.italic,
                       fontWeight: FontWeight.w700,
