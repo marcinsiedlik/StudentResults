@@ -42,5 +42,8 @@
   "presence": "Obecny",
   "absence": "Nieobecny",
   "labs_fetch_error": "Podczas pobierania szczegółów laboratoriów wystąpił nieoczekiwany błąd",
-  "group": "grupa"
+  "group": "grupa",
+  "sort_index_asc": "Sortowanie od ostatniego",
+  "sort_index_desc": "Sortowanie od pierwszego"
+
 }

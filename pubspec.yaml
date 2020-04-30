@@ -32,6 +32,7 @@ dependencies:
   date_format: ^1.0.8
   implicitly_animated_reorderable_list: ^0.1.10
   carousel_slider: ^2.0.0
+  kt_dart: ^0.7.0+1
 
 dev_dependencies:
   flutter_test:

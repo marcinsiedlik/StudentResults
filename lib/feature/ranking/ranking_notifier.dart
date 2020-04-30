@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
-import 'package:results/base/extensions/list_extensions.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:results/base/extensions/router_extensions.dart';
 import 'package:results/base/network/data_source/mapper/student/ranking_data_internal_mapper.dart';
 import 'package:results/base/network/data_source/model/student/ui/ui_ranking_data.dart';
@@ -9,19 +9,23 @@ import 'package:results/base/network/data_source/repository/student_repository.d
 import 'package:results/base/ui/call_state/call_state.dart';
 import 'package:results/base/ui/notifier/base_notifier.dart';
 import 'package:results/base/ui/routes/router.gr.dart';
+import 'package:results/feature/ranking/model/ranking_sort_type.dart';
 
 @injectable
 class RankingNotifier extends BaseNotifier {
   final StudentRepository _repository;
   final RankingDataInternalMapper _mapper;
 
-  RankingNotifier(this._repository,
-      this._mapper,) {
+  RankingNotifier(
+    this._repository,
+    this._mapper,
+  ) {
     _fetchStudents();
   }
 
   String _searchQuery;
   UiRankingData _rankingData;
+  RankingSortType sortType = RankingSortType.placeDesc();
 
   final studentsState = CallState<UiRankingData>();
 
@@ -46,6 +50,11 @@ class RankingNotifier extends BaseNotifier {
     _updateRankingData();
   }
 
+  void onSortSelected(RankingSortType type) {
+    sortType = type;
+    _updateRankingData();
+  }
+
   void onStudentClicked(UiStudent student) {
     final nextStudent = student.placeType.when(
       first: () => null,
@@ -57,10 +66,13 @@ class RankingNotifier extends BaseNotifier {
   }
 
   void _updateRankingData() {
-    final updatedOther = _rankingData.copyWith(
-      other: _rankingData.other.filter((e) => e.index.startsWith(_searchQuery)),
+    final list = KtList.from(_rankingData.other);
+    final filtered = list.filter((e) => e.index.startsWith(_searchQuery ?? ''));
+    final sorted = sortType.when(
+      placeDesc: () => filtered.sortedBy((e) => e.place),
+      placeAsc: () => filtered.sortedByDescending((e) => e.place),
     );
-    studentsState.data = updatedOther;
+    studentsState.data = _rankingData.copyWith(other: sorted.asList());
     notifyListeners();
   }
 }

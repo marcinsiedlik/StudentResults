@@ -38,7 +38,11 @@ class RankingPage extends StatelessWidget {
     const duration = const Duration(milliseconds: 200);
     return CustomScrollView(
       slivers: <Widget>[
-        RankingAppBar(onSearchChanged: notifier.onSearchChanged),
+        RankingAppBar(
+          onSearchChanged: notifier.onSearchChanged,
+          selectedSort: notifier.sortType,
+          onSortSelected: notifier.onSortSelected,
+        ),
         PodiumSectionSliver(
           child: _buildPodiumItems(context, notifier, data),
         ),

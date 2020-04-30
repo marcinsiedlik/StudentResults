@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:results/base/ui/app_ui_properties.dart';
 import 'package:results/base/ui/localization/app_localizations.dart';
+import 'package:results/feature/ranking/model/ranking_sort_type.dart';
 
 class RankingAppBar extends StatefulWidget {
   final ValueChanged<String> onSearchChanged;
+  final ValueChanged<RankingSortType> onSortSelected;
+  final RankingSortType selectedSort;
 
-  RankingAppBar({@required this.onSearchChanged});
+  RankingAppBar({
+    @required this.onSearchChanged,
+    @required this.onSortSelected,
+    @required this.selectedSort,
+  });
 
   @override
   _RankingAppBarState createState() => _RankingAppBarState();
@@ -44,10 +52,7 @@ class _RankingAppBarState extends State<RankingAppBar> {
         ),
       ),
       actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.sort),
-          onPressed: () {}, //TODO
-        )
+        _buildPopupMenu(context),
       ],
       expandedHeight: 2.15 * kToolbarHeight,
       flexibleSpace: _buildSearchSection(context),
@@ -102,6 +107,49 @@ class _RankingAppBarState extends State<RankingAppBar> {
           color: AppColors.colorPrimary,
         )
       ],
+    );
+  }
+
+  Widget _buildPopupMenu(BuildContext context) {
+    const types = [
+      RankingSortType.placeDesc(),
+      RankingSortType.placeAsc(),
+    ];
+    return PopupMenuButton<RankingSortType>(
+      icon: Icon(Icons.sort),
+      onSelected: widget.onSortSelected,
+      itemBuilder: (context) => types.map((e) => _buildSortMenuItem(context, e)).toList(),
+    );
+  }
+
+  PopupMenuEntry<RankingSortType> _buildSortMenuItem(BuildContext context, RankingSortType type) {
+    final color = widget.selectedSort == type ? AppColors.colorPrimary : Colors.black87;
+    return PopupMenuItem<RankingSortType>(
+      value: type,
+      child: Row(
+        children: <Widget>[
+          SvgPicture.asset(
+            type.when(
+              placeDesc: () => 'assets/icons/account_star.svg',
+              placeAsc: () => 'assets/icons/account_minus.svg',
+            ),
+            color: color,
+          ),
+          const SizedBox(width: 8),
+          Text(
+            AppLocalizations.of(context).get(
+              type.when(
+                placeDesc: () => 'sort_index_desc',
+                placeAsc: () => 'sort_index_asc',
+              ),
+            ),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              color: color,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
