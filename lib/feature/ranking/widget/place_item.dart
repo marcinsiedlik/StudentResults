@@ -26,9 +26,10 @@ class PlaceItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
           boxShadow: [
             BoxShadow(
-              color: AppColors.colorPrimarySwatch.shade50,
-              blurRadius: 10.0,
-            )
+              color: AppColors.colorPrimarySwatch.shade100,
+              blurRadius: 7.0,
+              spreadRadius: -2.0,
+            ),
           ],
         ),
         child: InkWell(
