@@ -55,10 +55,3 @@ class ErrorView extends StatelessWidget {
     );
   }
 }
-
-class _ErrorViewProperties {
-  final String iconAsset;
-  final String titleKey;
-
-  _ErrorViewProperties(this.iconAsset, this.titleKey);
-}
