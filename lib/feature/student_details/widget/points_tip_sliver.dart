@@ -14,13 +14,6 @@ class PointsTipSliver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (nextStudent == null) {
-      return SliverList(
-        delegate: SliverChildListDelegate([
-          const SizedBox(height: 32),
-        ]),
-      );
-    }
     return SliverList(
       delegate: SliverChildListDelegate([
         Padding(
@@ -29,7 +22,7 @@ class PointsTipSliver extends StatelessWidget {
             children: <Widget>[
               Flexible(
                 flex: 1,
-                child: Image.asset('assets/images/bulb.png'),
+                child: _getTipImage(),
               ),
               const SizedBox(width: 16),
               Flexible(
@@ -38,7 +31,7 @@ class PointsTipSliver extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      AppLocalizations.of(context).get('tip'),
+                      _getTipTitle(AppLocalizations.of(context)),
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppColors.colorPrimaryDark,
@@ -58,31 +51,48 @@ class PointsTipSliver extends StatelessWidget {
   }
 
   Widget _buildTextSection(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
-    final requiredPoints = _calculateRequiredPoints();
     return RichText(
       text: TextSpan(
-          style: const TextStyle(
-            fontWeight: FontWeight.w400,
-            fontStyle: FontStyle.italic,
-            color: AppColors.colorPrimaryDark,
-            fontSize: 16,
-          ),
-          children: [
-            TextSpan(text: localizations.get('tip_content')),
-            TextSpan(text: ' '),
-            TextSpan(
-              text: requiredPoints.toString(),
-              style: const TextStyle(fontWeight: FontWeight.w700),
-            ),
-            TextSpan(text: ' '),
-            TextSpan(text: _getPointsPlural(localizations, requiredPoints)),
-            TextSpan(text: '.'),
-          ]),
+        style: const TextStyle(
+          fontWeight: FontWeight.w400,
+          fontStyle: FontStyle.italic,
+          color: AppColors.colorPrimaryDark,
+          fontSize: 16,
+        ),
+        children: _getTipTextSpans(AppLocalizations.of(context)),
+      ),
     );
   }
 
-  int _calculateRequiredPoints() => (nextStudent.allPoints - student.allPoints) + 1;
+  String _getTipTitle(AppLocalizations localizations) => student.placeType.maybeWhen(
+        first: () => localizations.get('first_tip'),
+        orElse: () => localizations.get('tip'),
+      );
+
+  Widget _getTipImage() => student.placeType.maybeWhen(
+        first: () => Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Image.asset('assets/images/crown.png'),
+        ),
+        orElse: () => Image.asset('assets/images/bulb.png'),
+      );
+
+  List<InlineSpan> _getTipTextSpans(AppLocalizations localizations) => student.placeType.maybeWhen(
+        first: () => [
+          TextSpan(text: localizations.get('first_tip_content')),
+        ],
+        orElse: () => [
+          TextSpan(text: localizations.get('tip_content')),
+          TextSpan(text: ' '),
+          TextSpan(
+            text: _calculateRequiredPoints().toString(),
+            style: const TextStyle(fontWeight: FontWeight.w700),
+          ),
+          TextSpan(text: ' '),
+          TextSpan(text: _getPointsPlural(localizations, _calculateRequiredPoints())),
+          TextSpan(text: '.'),
+        ],
+      );
 
   String _getPointsPlural(AppLocalizations localizations, int points) {
     String key;
@@ -95,4 +105,6 @@ class PointsTipSliver extends StatelessWidget {
     }
     return localizations.get(key);
   }
+
+  int _calculateRequiredPoints() => (nextStudent.allPoints - student.allPoints) + 1;
 }
