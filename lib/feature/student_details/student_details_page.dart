@@ -10,6 +10,7 @@ import 'package:results/feature/student_details/widget/points_table_sliver.dart'
 import 'package:results/feature/student_details/widget/points_tip_sliver.dart';
 import 'package:results/feature/student_details/widget/presence_tab_sliver.dart';
 import 'package:results/feature/student_details/widget/student_details_app_bar.dart';
+import 'package:results/feature/student_details/widget/student_place_sliver.dart';
 import 'package:results/feature/student_details/widget/user_info_section_sliver.dart';
 
 class StudentDetailsPage extends StatelessWidget {
@@ -30,6 +31,7 @@ class StudentDetailsPage extends StatelessWidget {
           child: CustomScrollView(
             slivers: <Widget>[
               StudentDetailsAppBar(),
+              StudentPlaceSliver(student: selectedStudent),
               UserInfoSectionSliver(student: selectedStudent),
               PointTableSliver(student: selectedStudent),
               PointsTipSliver(student: selectedStudent, nextStudent: nextStudent),

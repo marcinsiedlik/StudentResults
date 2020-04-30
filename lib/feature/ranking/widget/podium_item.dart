@@ -26,13 +26,16 @@ class PodiumItem extends StatelessWidget {
           onTap: () => onClicked(student),
           child: Column(
             children: <Widget>[
-              Image.asset(
-                student.placeType.maybeWhen(
-                  first: () => 'assets/images/medal_first.png',
-                  second: () => 'assets/images/medal_second.png',
-                  orElse: () => 'assets/images/medal_third.png',
+              Hero(
+                tag: student.index,
+                child: Image.asset(
+                  student.placeType.maybeWhen(
+                    first: () => 'assets/images/medal_first.png',
+                    second: () => 'assets/images/medal_second.png',
+                    orElse: () => 'assets/images/medal_third.png',
+                  ),
+                  width: 60,
                 ),
-                width: 60,
               ),
               const SizedBox(height: 8),
               Text(

@@ -39,5 +39,6 @@
   "points_earned": "Zdobyto\npunktów",
   "presence": "Obecny",
   "absence": "Nieobecny",
-  "labs_fetch_error": "Podczas pobierania szczegółów laboratoriów wystąpił nieoczekiwany błąd"
+  "labs_fetch_error": "Podczas pobierania szczegółów laboratoriów wystąpił nieoczekiwany błąd",
+  "group": "grupa"
 }
