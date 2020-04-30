@@ -79,7 +79,8 @@ class PlaceItem extends StatelessWidget {
           '${AppLocalizations.of(context).get(labelKey)}: ',
           style: TextStyle(
             fontWeight: FontWeight.w400,
-            fontSize: bigHeader ? 18 : 15,
+            fontStyle: FontStyle.italic,
+            fontSize: bigHeader ? 17 : 15,
           ),
         ),
         Text(
