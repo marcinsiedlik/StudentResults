@@ -26,10 +26,8 @@ dependencies:
   auto_route: ^0.4.5
   # util
   freezed_annotation: ^0.7.1
-  shared_preferences: ^0.5.7
   flushbar: ^1.10.0
   flutter_svg: ^0.17.4
-  date_format: ^1.0.8
   implicitly_animated_reorderable_list: ^0.1.10
   carousel_slider: ^2.0.0
   kt_dart: ^0.7.0+1

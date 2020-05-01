@@ -5,4 +5,4 @@ import 'package:results/base/di/get_it.iconfig.dart';
 final getIt = GetIt.instance;
 
 @injectableInit
-Future<void> initDependencyInjection() => $initGetIt(getIt);
+void initDependencyInjection() => $initGetIt(getIt);

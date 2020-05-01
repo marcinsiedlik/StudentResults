@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:results/base/app/app.dart';
 import 'package:results/base/di/get_it.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await initDependencyInjection();
+  initDependencyInjection();
   _setupStatusBar();
   _setupScreenOrientation();
   runApp(App());
