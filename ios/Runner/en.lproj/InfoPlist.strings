@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Runner
+
+  Created by Marcin Siedlik on 01/05/2020.
+  
+*/
+
+"CFBundleName" = "Results";
