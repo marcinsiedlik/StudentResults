@@ -21,6 +21,7 @@ class AppLocalizations {
 
   static const List<Locale> supportedLocales = [
     const Locale('pl'),
+    const Locale('en'),
   ];
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
